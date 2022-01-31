@@ -13,7 +13,5 @@ model User {
   updatedAt          DateTime @updatedAt
   name               String
   encryptedPassword  String
-  firstName          String
-  lastName           String
   email              String   @unique
 }
