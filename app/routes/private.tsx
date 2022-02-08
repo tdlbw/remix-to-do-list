@@ -1,8 +1,9 @@
-import { User } from '@prisma/client'
-import type { ActionFunction, LoaderFunction } from 'remix'
 import { Form, json, useLoaderData } from 'remix'
 import { auth } from '~/api/utils/auth.server'
 
+import type { User } from '@prisma/client'
+
+import type { ActionFunction, LoaderFunction } from 'remix'
 type LoaderData = { email: string }
 
 export const action: ActionFunction = async ({ request }) => {
@@ -10,9 +11,8 @@ export const action: ActionFunction = async ({ request }) => {
 }
 
 export const loader: LoaderFunction = async ({ request }) => {
-  console.log({ request })
   const user = await auth.isAuthenticated(request, {
-    failureRedirect: '/login',
+    failureRedirect: '/sign-in',
   })
 
   return json<User>(user)

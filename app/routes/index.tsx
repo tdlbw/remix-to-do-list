@@ -1,6 +1,13 @@
+import styled from 'styled-components'
+
+const Box = styled('div')`
+  font-family: system-ui, sans-serif;
+  line-height: 1.4;
+`
+
 export default function Index(): React.ReactElement {
   return (
-    <div style={{ fontFamily: 'system-ui, sans-serif', lineHeight: '1.4' }}>
+    <Box>
       <h1>Welcome to Remix</h1>
       <ul>
         <li>
@@ -19,6 +26,6 @@ export default function Index(): React.ReactElement {
           </a>
         </li>
       </ul>
-    </div>
+    </Box>
   )
 }

@@ -1,0 +1,15 @@
+{
+  "confirmPassword": "Confirm password",
+  "email": "Email address",
+  "emailRequired": "Field email is required",
+  "haveAccount": "Have an account? Sign In",
+  "invalidCredentials": "Sorry, invalid credentials",
+  "name": "Your name",
+  "notAccount": "Don't have an account? Sign Up",
+  "notFound": "User not found",
+  "password": "Password",
+  "passwordRequired": "Field password required",
+  "signIn": "Sign in",
+  "signUp": "Sign Up"
+}
+
