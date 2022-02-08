@@ -4,6 +4,8 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': 'error',
     '@typescript-eslint/no-explicit-any': 'error',
     'prettier/prettier': 'error',
+    '@typescript-eslint/consistent-type-imports': 'error',
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-var-requires': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/no-empty-interface': 'off',

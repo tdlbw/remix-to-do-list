@@ -51,3 +51,9 @@ rm -rf app
 # copy your app over
 cp -R ../my-old-remix-app/app app
 ```
+
+https://github.com/sergiodxa/remix-i18next
+
+https://github.com/sergiodxa/remix-auth
+
+https://github.com/sergiodxa/remix-auth-form
