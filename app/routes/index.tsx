@@ -1,31 +1,27 @@
-import styled from 'styled-components'
+import { json } from 'remix'
+import { auth } from '~/api/utils/auth.server'
+import Layout from '~/components/Layout'
 
-const Box = styled('div')`
-  font-family: system-ui, sans-serif;
-  line-height: 1.4;
-`
+import type { LoaderData } from '~/api/types/loader'
 
-export default function Index(): React.ReactElement {
-  return (
-    <Box>
-      <h1>Welcome to Remix</h1>
-      <ul>
-        <li>
-          <a target="_blank" href="https://remix.run/tutorials/blog" rel="noreferrer">
-            15m Quickstart Blog Tutorial
-          </a>
-        </li>
-        <li>
-          <a target="_blank" href="https://remix.run/tutorials/jokes" rel="noreferrer">
-            Deep Dive Jokes App Tutorial
-          </a>
-        </li>
-        <li>
-          <a target="_blank" href="https://remix.run/docs" rel="noreferrer">
-            Remix Docs
-          </a>
-        </li>
-      </ul>
-    </Box>
-  )
+import type { ActionFunction, LoaderFunction } from 'remix'
+import { i18n } from '~/i18n.server'
+
+export const action: ActionFunction = async ({ request }) => {
+  const formData = await request.formData()
+  const { _action } = Object.fromEntries(formData)
+  if (_action) await auth.logout(request, { redirectTo: '/sign-in' })
+  else return null
+}
+
+export const loader: LoaderFunction = async ({ request }) => {
+  await auth.isAuthenticated(request, {
+    failureRedirect: '/sign-in',
+  })
+  const i18next = await i18n.getTranslations(request, ['layout'])
+  return json<LoaderData>({ error: null, i18n: i18next })
+}
+
+export default function Screen() {
+  return <Layout>aza</Layout>
 }

@@ -3,7 +3,7 @@ import { auth } from '../utils/auth.server'
 
 export const signUpAction: ActionFunction = async ({ request }) => {
   await auth.authenticate('sign-up', request, {
-    successRedirect: '/private',
+    successRedirect: '/',
     failureRedirect: '/sign-up',
   })
 }
