@@ -57,3 +57,6 @@ https://github.com/sergiodxa/remix-i18next
 https://github.com/sergiodxa/remix-auth
 
 https://github.com/sergiodxa/remix-auth-form
+
+
+https://www.youtube.com/watch?time_continue=389&v=w2i-9cYxSdc&feature=emb_logo
