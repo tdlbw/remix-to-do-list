@@ -60,3 +60,5 @@ https://github.com/sergiodxa/remix-auth-form
 
 
 https://www.youtube.com/watch?time_continue=389&v=w2i-9cYxSdc&feature=emb_logo
+
+prisma migrate dev --name
