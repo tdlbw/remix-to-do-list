@@ -14,4 +14,30 @@ model User {
   name               String
   encryptedPassword  String
   email              String   @unique
+  tasks              Task[]
+}
+
+model Task {
+  id                 String   @id @default(uuid())
+  name               String
+  userId             String
+  description        String
+  endDate            DateTime
+  isEnded            Boolean
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+  user               User @relation(fields: [userId], references: [id])
+  subTasks           Subtask[]
+}
+
+model Subtask {
+  id                 String   @id @default(uuid())
+  taskId             String
+  name               String
+  description        String
+  endDate            DateTime
+  isEnded            Boolean
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+  task               Task @relation(fields: [taskId], references: [id])
 }
