@@ -23,10 +23,10 @@ model Task {
   userId             String
   description        String
   endDate            DateTime
-  isEnded            Boolean
+  isEnded            Boolean  @default(false)
   createdAt          DateTime @default(now())
   updatedAt          DateTime @updatedAt
-  user               User @relation(fields: [userId], references: [id])
+  user               User     @relation(fields: [userId], references: [id])
   subTasks           Subtask[]
 }
 
@@ -36,8 +36,8 @@ model Subtask {
   name               String
   description        String
   endDate            DateTime
-  isEnded            Boolean
+  isEnded            Boolean  @default(false)
   createdAt          DateTime @default(now())
   updatedAt          DateTime @updatedAt
-  task               Task @relation(fields: [taskId], references: [id])
+  task               Task     @relation(fields: [taskId], references: [id])
 }

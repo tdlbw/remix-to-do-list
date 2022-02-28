@@ -6,7 +6,7 @@ import { auth } from '../utils/auth.server'
 
 import type { LoaderFunction } from 'remix'
 
-import type { LoaderData } from '../types/loader'
+import type { LoaderData } from '~/types/loader'
 
 export const authLoader: LoaderFunction = async ({ request }) => {
   const session = await sessionStorage.getSession(request.headers.get('Cookie'))

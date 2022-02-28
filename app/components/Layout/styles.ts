@@ -1,8 +1,9 @@
 import styled from 'styled-components'
 
-import { Grid } from '@mui/material'
+import { Box, Grid } from '@mui/material'
+import { grey } from '@mui/material/colors'
 
-export const Window = styled.div`
+export const Container = styled.div`
   height: 100%;
   height: 100%;
   position: absolute;
@@ -12,6 +13,18 @@ export const Window = styled.div`
 `
 
 export const BaseGrid = styled(Grid)`
-  height: 100%;
   width: 100%;
+  display: flex;
+  justify-content: center;
+`
+
+export const MainBox = styled(Box)`
+  display: flex;
+  background-color: ${grey[200]};
+  min-height: 100%;
+`
+
+export const ContentBox = styled(Box)`
+  flex-grow: 1;
+  padding: 24px;
 `

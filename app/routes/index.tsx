@@ -1,27 +1,16 @@
-import { json } from 'remix'
-import { auth } from '~/api/utils/auth.server'
+import { inboxPageAction } from '~/api/Inboxpage/inbox-page-action'
+import { inboxPageLoader } from '~/api/Inboxpage/inbox-page-loader'
 import Layout from '~/components/Layout'
+import InboxPage from '~/scenes/InboxPage'
 
-import type { LoaderData } from '~/api/types/loader'
+export const action = inboxPageAction
 
-import type { ActionFunction, LoaderFunction } from 'remix'
-import { i18n } from '~/i18n.server'
-
-export const action: ActionFunction = async ({ request }) => {
-  const formData = await request.formData()
-  const { _action } = Object.fromEntries(formData)
-  if (_action) await auth.logout(request, { redirectTo: '/sign-in' })
-  else return null
-}
-
-export const loader: LoaderFunction = async ({ request }) => {
-  await auth.isAuthenticated(request, {
-    failureRedirect: '/sign-in',
-  })
-  const i18next = await i18n.getTranslations(request, ['layout'])
-  return json<LoaderData>({ error: null, i18n: i18next })
-}
+export const loader = inboxPageLoader
 
 export default function Screen() {
-  return <Layout>aza</Layout>
+  return (
+    <Layout>
+      <InboxPage />
+    </Layout>
+  )
 }
