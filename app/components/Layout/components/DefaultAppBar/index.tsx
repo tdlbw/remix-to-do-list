@@ -5,9 +5,9 @@ import Toolbar from '@mui/material/Toolbar'
 import { AppBar } from './muiStyles'
 
 import type { PropsWithChildren } from 'react'
-import type { OpenValueProps } from '../../types'
+import type { OpenValueI } from '~/types/openValue'
 
-export default function DefaultAppBar({ open, setOpen, children }: PropsWithChildren<OpenValueProps>) {
+export default function DefaultAppBar({ open, setOpen, children }: PropsWithChildren<OpenValueI>) {
   const handleDrawerOpen = () => {
     setOpen(true)
   }

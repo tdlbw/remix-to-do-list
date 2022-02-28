@@ -1,0 +1,16 @@
+{
+  "addTaskButton": "Add task",
+  "addSubtaskButton": "Add task",
+  "addSubtask": {
+    "title": "Add new subtask",
+    "description": "Enter a description for the new subtask.",
+    "closeText": "Cancel",
+    "submitText": "Add subtask"
+  },
+  "addTask": {
+    "title": "Add new task",
+    "description": "Enter a description for the new task.",
+    "closeText": "Cancel",
+    "submitText": "Add task"
+  }
+}

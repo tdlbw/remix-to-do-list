@@ -8,9 +8,9 @@ import { useTheme } from '@mui/material/styles'
 
 import { Drawer, DrawerHeader } from './muiStyles'
 
-import type { OpenValueProps } from '../../types'
+import type { OpenValueI } from '~/types/openValue'
 
-export default function DefaultDrawer({ open, setOpen, children }: PropsWithChildren<OpenValueProps>) {
+export default function DefaultDrawer({ open, setOpen, children }: PropsWithChildren<OpenValueI>) {
   const theme = useTheme()
   const handleDrawerClose = () => {
     setOpen(false)

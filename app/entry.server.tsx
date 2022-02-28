@@ -1,18 +1,19 @@
+import i18next from 'i18next'
 import { renderToString } from 'react-dom/server'
+import { initReactI18next } from 'react-i18next'
 import { RemixServer } from 'remix'
+import { RemixI18NextProvider } from 'remix-i18next'
 import { ServerStyleSheet } from 'styled-components'
 
+import AdapterDateFns from '@mui/lab/AdapterDateFns'
+import LocalizationProvider from '@mui/lab/LocalizationProvider'
 import { CssBaseline } from '@mui/material'
 import { ThemeProvider } from '@mui/material/styles'
 
+import i18nParams from './i18n.params'
 import theme from './material/theme'
 
 import type { EntryContext } from 'remix'
-import { RemixI18NextProvider } from 'remix-i18next'
-import i18next from 'i18next'
-import { initReactI18next } from 'react-i18next'
-import i18nParams from './i18n.params'
-
 export default async function handleRequest(
   request: Request,
   responseStatusCode: number,
@@ -23,9 +24,10 @@ export default async function handleRequest(
   const MuiRemixServer = () => (
     <RemixI18NextProvider i18n={i18next}>
       <ThemeProvider theme={theme}>
-        {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-        <CssBaseline />
-        <RemixServer context={remixContext} url={request.url} />
+        <LocalizationProvider dateAdapter={AdapterDateFns}>
+          <CssBaseline />
+          <RemixServer context={remixContext} url={request.url} />
+        </LocalizationProvider>
       </ThemeProvider>
     </RemixI18NextProvider>
   )

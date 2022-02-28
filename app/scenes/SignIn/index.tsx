@@ -6,7 +6,7 @@ import { Alert, Box, Grid, Link, Paper, TextField, Typography } from '@mui/mater
 
 import { BaseGrid, Container, ImageGrid, StyledButton, Window } from './styles'
 
-import type { LoaderData } from '~/api/types/loader'
+import type { LoaderData } from '~/types/loader'
 
 export default function SignIn() {
   const { error } = useLoaderData<LoaderData>()

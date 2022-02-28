@@ -19,7 +19,6 @@ auth.use(
     if (!(await compare(password as string, user.encryptedPassword))) {
       throw new AuthorizationError('invalidCredentials')
     }
-    console.log({ user })
     return user as User
   }),
   'sign-in'
@@ -37,7 +36,6 @@ auth.use(
     if (user) throw new AuthorizationError('alreadyExist')
     const encryptedPassword = await hash(password, saltRounds)
     const newUser = await db.user.create({ data: { email, encryptedPassword, name } })
-    console.log({ newUser })
     return newUser as User
   }),
   'sign-up'
