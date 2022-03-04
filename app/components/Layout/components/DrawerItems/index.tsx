@@ -6,6 +6,7 @@ import { Form } from 'remix'
 import InboxIcon from '@mui/icons-material/Inbox'
 import LogoutIcon from '@mui/icons-material/Logout'
 import TodayIcon from '@mui/icons-material/Today'
+import EventBusyIcon from '@mui/icons-material/EventBusy'
 import { List, ListItem, ListItemIcon, ListItemText } from '@mui/material'
 
 interface ListItemI {
@@ -26,6 +27,11 @@ export default function DrawerItems() {
       link: '/today',
       icon: <TodayIcon />,
       text: t('today'),
+    },
+    {
+      link: '/missing',
+      icon: <EventBusyIcon />,
+      text: t('missing'),
     },
   ]
 

@@ -11,7 +11,7 @@ import { deleteSubtask } from '../Subtask/delete-subtask'
 import { updateTask } from '../Task/update-task'
 import { updateSubtask } from '../Subtask/update-subtask'
 
-export const inboxPageAction: ActionFunction = async ({ request }) => {
+export const defaultAction: ActionFunction = async ({ request }) => {
   const formData = await request.formData()
   const { _action, ...values } = Object.fromEntries(formData)
   const user = await auth.isAuthenticated(request)

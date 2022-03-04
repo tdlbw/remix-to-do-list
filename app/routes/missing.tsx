@@ -1,11 +1,11 @@
 import { defaultAction } from '~/api/DefaultActions/default-action'
-import { inboxPageLoader } from '~/api/Inboxpage/inbox-page-loader'
+import { missingPageLoader } from '~/api/MisingPage/missing-page-loader'
 import DefaultPage from '~/scenes/DefaultPage'
 
 export const action = defaultAction
 
-export const loader = inboxPageLoader
+export const loader = missingPageLoader
 
-export default function InboxPage() {
+export default function MissingPage() {
   return <DefaultPage />
 }
