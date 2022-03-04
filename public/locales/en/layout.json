@@ -2,5 +2,6 @@
   "projectName": "Remix ToDoList",
   "inbox": "Inbox",
   "today": "Today",
-  "logout": "Logout"
+  "logout": "Logout",
+  "missing": "Missing"
 }

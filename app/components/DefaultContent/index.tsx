@@ -14,7 +14,7 @@ import type { TranslationI } from '~/types/formDialog'
 import type { LoaderDataWithTask, TaskWithSubtask } from '~/types/task'
 import type { Subtask } from '@prisma/client'
 
-export default function InboxPage() {
+export default function DefaultContent() {
   const { t } = useTranslation('task')
   const { tasks } = useLoaderData<LoaderDataWithTask>()
   const [open, setOpen] = useToggle(false)

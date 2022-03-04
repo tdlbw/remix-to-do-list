@@ -1,11 +1,11 @@
 import { defaultAction } from '~/api/DefaultActions/default-action'
-import { inboxPageLoader } from '~/api/Inboxpage/inbox-page-loader'
+import { todayPageLoader } from '~/api/TodayPage/today-page-loader'
 import DefaultPage from '~/scenes/DefaultPage'
 
 export const action = defaultAction
 
-export const loader = inboxPageLoader
+export const loader = todayPageLoader
 
-export default function InboxPage() {
+export default function TodayPage() {
   return <DefaultPage />
 }
