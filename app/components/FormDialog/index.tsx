@@ -19,7 +19,7 @@ export default function FormDialog({
   description,
   closeText,
   submitText,
-  formName,
+  type,
 }: PropsWithChildren<FormDialogI>) {
   return (
     <Dialog open={open} onClose={() => setOpen(false)}>
@@ -33,7 +33,7 @@ export default function FormDialog({
           <Button component="button" onClick={() => setOpen(false)} type="button">
             {closeText}
           </Button>
-          <Button component="button" onClick={() => setOpen(false)} type="submit" name="_action" value={formName}>
+          <Button component="button" onClick={() => setOpen(false)} type="submit" name="_action" value={type}>
             {submitText}
           </Button>
         </DialogActions>

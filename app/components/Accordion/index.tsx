@@ -7,10 +7,9 @@ import AccordionDetails from '@mui/material/AccordionDetails'
 import AccordionSummary from '@mui/material/AccordionSummary'
 
 import UpdateCheckboxConditionForm from '../UpdateCheckboxConditionForm'
-import { StyledButton } from './styles'
+import { StyledButton, Wrapper } from './styles'
 
 interface AccordionProps {
-  onAddSubTaskClick: () => void
   label: string
   description: string
   endDate: Date
@@ -18,11 +17,12 @@ interface AccordionProps {
   taskId: string
   checked: boolean
   indeterminate?: boolean
+  onOpenModal: (type: string, taskId?: string, subtaskId?: string) => void
 }
 
 export default function Accordion({
   children,
-  onAddSubTaskClick,
+  onOpenModal,
   addTaskLabel,
   taskId,
   ...props
@@ -30,15 +30,19 @@ export default function Accordion({
   return (
     <MUIAccordion>
       <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-        <UpdateCheckboxConditionForm actionName="updateTask" {...{ recordId: taskId, ...props }} />
+        <UpdateCheckboxConditionForm
+          actionType="Task"
+          {...{ recordId: taskId, ...props }}
+          onOpenModal={() => onOpenModal('changeTask', taskId)}
+        />
       </AccordionSummary>
       <AccordionDetails>
-        <div>
+        <Wrapper>
           {children}
-          <StyledButton onClick={onAddSubTaskClick} startIcon={<AddCircleOutlineIcon />}>
+          <StyledButton onClick={() => onOpenModal('addSubtask', taskId)} startIcon={<AddCircleOutlineIcon />}>
             {addTaskLabel}
           </StyledButton>
-        </div>
+        </Wrapper>
       </AccordionDetails>
     </MUIAccordion>
   )

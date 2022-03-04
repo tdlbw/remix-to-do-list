@@ -1,47 +1,69 @@
-import React from 'react'
+import { useCallback, useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import { useToggle } from 'react-use'
 import { useLoaderData } from 'remix'
-import AddTaskDialog from '~/components/AddTaskDialog'
+import TaskDialog from '~/components/TaskDialog'
 import TaskView from '~/components/TaskView'
 
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline'
 
-import type { AddTaskDialogI } from '~/types/formDialog'
+import { StyledButton } from './styles'
+
+import type { TranslationI } from '~/types/formDialog'
 
 import type { LoaderDataWithTask, TaskWithSubtask } from '~/types/task'
-import { StyledButton } from './styles'
-import { useTranslation } from 'react-i18next'
+import type { Subtask } from '@prisma/client'
 
 export default function InboxPage() {
   const { t } = useTranslation('task')
   const { tasks } = useLoaderData<LoaderDataWithTask>()
-  const [open, setOpen] = React.useState(false)
-  const [taskId, setTaskId] = React.useState('')
-  const handleAddSubTaskClick = (value: string) => {
-    setTaskId(value)
-    setOpen(true)
+  const [open, setOpen] = useToggle(false)
+  const [type, setType] = useState<string>('')
+  const [record, setRecord] = useState<TaskWithSubtask | Subtask | undefined>()
+  const [taskId, setTaskId] = useState<string | undefined>()
+
+  const handleOpenModal = useCallback(
+    (type: string, taskId?: string, subtaskId?: string) => {
+      setType(type)
+      const task = taskId ? tasks.find((item) => item.id === taskId) : undefined
+      setTaskId(taskId)
+      switch (type) {
+        case 'addSubtask':
+          setRecord(undefined)
+          break
+        case 'addTask':
+          setRecord(undefined)
+          break
+        case 'changeTask':
+          setRecord(task)
+          break
+        case 'changeSubtask':
+          const subtask = task?.subTasks.find((item) => item.id === subtaskId)
+          setRecord(subtask)
+          break
+      }
+      setOpen(true)
+    },
+    [setOpen, setTaskId, setRecord]
+  )
+
+  const getTranslationByKey = (key: string): TranslationI => {
+    return {
+      ...t(key, { returnObjects: true }),
+    }
   }
 
-  const addSubTaskObj: Omit<AddTaskDialogI, 'open' | 'setOpen'> = {
-    ...t('addSubtask', { returnObjects: true }),
-    formName: 'addSubTask',
-  }
-
-  const addTaskObj: Omit<AddTaskDialogI, 'open' | 'setOpen'> = {
-    ...t('addTask', { returnObjects: true }),
-    formName: 'addTask',
-  }
-
-  const dialogOptions = taskId ? addSubTaskObj : addTaskObj
+  const dialogOptions = getTranslationByKey(type)
 
   return (
     <>
-      <StyledButton onClick={() => setOpen(true)} startIcon={<AddCircleOutlineIcon />}>
+      <StyledButton onClick={() => handleOpenModal('addTask')} startIcon={<AddCircleOutlineIcon />}>
         {t('addTaskButton')}
       </StyledButton>
       {tasks.map((task: TaskWithSubtask) => (
-        <TaskView key={task.id} task={task} onAddSubTaskClick={() => handleAddSubTaskClick(task.id)} />
+        <TaskView key={task.id} task={task} onOpenModal={handleOpenModal} />
       ))}
-      <AddTaskDialog {...{ open, setOpen, taskId, ...dialogOptions }} />
+      <TaskDialog {...{ open, setOpen, record, taskId, ...dialogOptions }} />
     </>
   )
 }

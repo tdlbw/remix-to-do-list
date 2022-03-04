@@ -8,10 +8,12 @@ import { Container } from './styles'
 interface DateTimePickerProps {
   label: string
   name: string
+  initialValue?: Date | undefined
 }
 
-export default function DateTimePicker({ label, name }: DateTimePickerProps) {
-  const [value, setValue] = useState<Date | null>(new Date())
+export default function DateTimePicker({ label, name, initialValue }: DateTimePickerProps) {
+  const date = initialValue ? new Date(initialValue) : new Date()
+  const [value, setValue] = useState<Date | null>(date)
 
   const handleChange = (newValue: Date | null) => {
     setValue(newValue)
