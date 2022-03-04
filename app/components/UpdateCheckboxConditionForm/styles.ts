@@ -7,3 +7,7 @@ export const Wrapper = styled.div`
   align-items: center;
   padding: 0 10px 0 0;
 `
+export const ButtonsContainer = styled.div`
+  display: flex;
+  align-items: center;
+`

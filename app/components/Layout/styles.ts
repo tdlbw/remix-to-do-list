@@ -5,7 +5,6 @@ import { grey } from '@mui/material/colors'
 
 export const Container = styled.div`
   height: 100%;
-  height: 100%;
   position: absolute;
   width: 100%;
   x: 0;
@@ -20,11 +19,13 @@ export const BaseGrid = styled(Grid)`
 
 export const MainBox = styled(Box)`
   display: flex;
-  background-color: ${grey[200]};
   min-height: 100%;
+  min-width: 100%;
 `
 
 export const ContentBox = styled(Box)`
   flex-grow: 1;
   padding: 24px;
+  background-color: ${grey[200]};
+  min-height: 100%;
 `

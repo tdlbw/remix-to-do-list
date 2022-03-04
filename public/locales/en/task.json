@@ -2,15 +2,31 @@
   "addTaskButton": "Add task",
   "addSubtaskButton": "Add task",
   "addSubtask": {
+    "type": "addSubtask",
     "title": "Add new subtask",
     "description": "Enter a description for the new subtask.",
     "closeText": "Cancel",
     "submitText": "Add subtask"
   },
   "addTask": {
+    "type": "addTask",
     "title": "Add new task",
     "description": "Enter a description for the new task.",
     "closeText": "Cancel",
     "submitText": "Add task"
+  },
+  "changeTask": {
+    "type": "changeTask",
+    "title": "Change task",
+    "description": "Update a description for the task.",
+    "closeText": "Cancel",
+    "submitText": "Change task"
+  },
+  "changeSubtask": {
+    "type": "changeSubtask",
+    "title": "Change subtask",
+    "description": "Update a description for the subtask.",
+    "closeText": "Cancel",
+    "submitText": "Change subtask"
   }
 }
