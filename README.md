@@ -37,7 +37,7 @@ The following file structure is supported in the project:
 
 
 
-## INSTALLATION
+## Installation
 
 - To get started, create your .env file, as in the example .env.example
 - After that apply all migrations to your Database
