@@ -10,7 +10,7 @@ export const Container = styled(Box)`
 `
 
 export const ImageGrid = styled(Grid)`
-  background-image: url('https://source.unsplash.com/random');
+  background-image: url('https://funart.pro/uploads/posts/2021-04/1617325551_55-p-oboi-ozero-braies-italiya-63.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
